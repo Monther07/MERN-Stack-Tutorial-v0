@@ -17,7 +17,7 @@ router.post('/', (req, res) => {
   res.json({ mssg: 'POST a new felling' })
 })
 
-// DELETE a new feelings
+ // DELETE a new feelings
 router.delete('/:id', (req, res) => {
   res.json({ mssg: 'DELETE a felling' })
 })
