@@ -14,17 +14,17 @@ router.get('/:id', (req, res) => {
 
 // POST a new feelings
 router.post('/', (req, res) => {
-  res.json({ mssg: 'POST a new felling' })
+  res.json({ mssg: 'POST a new feelings' })
 })
 
- // DELETE a new feelings
+// DELETE a new feelings
 router.delete('/:id', (req, res) => {
-  res.json({ mssg: 'DELETE a felling' })
+  res.json({ mssg: 'DELETE a feelings' })
 })
 
 // PATCH a new feelings
 router.patch('/:id', (req, res) => {
-  res.json({ mssg: 'UPDATE a felling' })
+  res.json({ mssg: 'UPDATE a feelings' })
 })
 
 module.exports = router
