@@ -6,7 +6,7 @@ const feelingsRoutes = require('./routes/feelings')
 // express app
 const app = express()
 
-// middelware  
+// middelware
 app.use(express.json())
 app.use((req, res, next) => {
   console.log(req.path, req.method)
@@ -19,3 +19,5 @@ app.use('/api/feelings', feelingsRoutes)
 app.listen(process.env.PORT, () => {
   console.log('Listining to the port 4000')
 })
+
+// edit
