@@ -19,7 +19,7 @@ router.post('/', async (req, res) => {
 
   try {
     const feeling = await Feeling.create({ feel, period, rank })
-    res.status(200).json(feelling)
+    res.status(200).json(feeling)
   } catch (error) {
     res.status(400).json({ error: error.message })
   }
