@@ -6,14 +6,9 @@ const feelingsRoutes = require('./routes/feelings')
 // express app
 const app = express()
 
-<<<<<<< Updated upstream
 // middelware  
 app.use(express.json())
-=======
-// middelware
-app.use(express.json())
 
->>>>>>> Stashed changes
 app.use((req, res, next) => {
   console.log(req.path, req.method)
   next()
