@@ -1,4 +1,5 @@
 const express = require('express')
+const Feeling = require('../models/feelingModel')
 
 const router = express.Router()
 
@@ -13,7 +14,15 @@ router.get('/:id', (req, res) => {
 })
 
 // POST a new feelings
-router.post('/', (req, res) => {
+router.post('/', async (req, res) => {
+  const { feel, period, rank } = req.body
+
+  try {
+    const feeling = await Feeling.create({ feel, period, rank })
+    res.status(200).json(feelling)
+  } catch (error) {
+    res.status(400).json({ error: error.message })
+  }
   res.json({ mssg: 'POST a new feelings' })
 })
 
