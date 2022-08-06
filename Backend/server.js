@@ -3,7 +3,6 @@ require('dotenv').config()
 const express = require('express')
 const fellingsRoutes = require('./routes/feelings')
 
-
 // express app
 const app = express()
 
@@ -13,9 +12,7 @@ app.use((req, res, next) => {
   next()
 })
 // route
-app.get('/', (req, res) => {
-  res.json({ mssg: 'Welcome to the app' })
-})
+app.use(fellingsRoutes)
 
 // listen for requst
 app.listen(process.env.PORT, () => {
