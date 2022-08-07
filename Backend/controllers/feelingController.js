@@ -46,7 +46,7 @@ const deleteFeeling = async (req, res) => {
     return res.status(404).json({ error: 'no such feelings' })
   }
 
-  const feeling = Feeling.findByIdAndDelete({ _id: id })
+  const feeling = await Feeling.findByIdAndDelete({ _id: id })
 
   if (!feeling) {
     return res.status(404).json({ error: 'no such feelings' })
@@ -59,10 +59,10 @@ const updateFeeling = async (req, res) => {
   // vildate the id in the db or not
   const { id } = req.params
   if (!mongoose.Types.ObjectId.isValid(id)) {
-    return res.status(404).json({ error: 'no such feelings' })
+    return res.status(404).json({ error: 'id update no such feelings' })
   }
 
-  const feeling = Feeling.findByIdAndUpdate(
+  const feeling = await Feeling.findOneAndUpdate(
     { _id: id },
     {
       ...req.body,
@@ -70,10 +70,9 @@ const updateFeeling = async (req, res) => {
   )
 
   if (!feeling) {
-    return res.status(404).json({ error: 'no such feelings' })
-  } else {
-    return res.status(200).json(feeling)
+    return res.status(404).json({ error: 'update no such feelings' })
   }
+  res.status(200).json(feeling)
 }
 
 module.exports = {
