@@ -1,4 +1,4 @@
-const { model } = require('mongoose')
+const mongoose = require('mongoose')
 const Feeling = require('../models/feelingModel')
 
 // GET all feeling
@@ -12,10 +12,13 @@ const getFeelings = async (req, res) => {
 const getfeeling = async (req, res) => {
   // get the id from the req parameters (the route) in the URI
   const { id } = req.params
-
+  // vildate the id in the db or not
+  if (!mongoose.Types.ObjectId.isValid(id)) {
+    return res.status(404).json({ error: 'no such feelings' })
+  }
   const feeling = await Feeling.findById(id)
   if (!feeling) {
-    return res.status(400).json({ error: 'no such a feeling' })
+    return res.status(404).json({ error: 'no such a feeling' })
   } else {
     res.status(200).json(feeling)
   }
@@ -30,17 +33,53 @@ const createFeeling = async (req, res) => {
     const feeling = await Feeling.create({ feel, period, rank })
     res.status(200).json(feeling)
   } catch (error) {
-    res.status(400).json({ error: error.message })
+    res.status(404).json({ error: error.message })
   }
   res.json({ mssg: 'POST a new feelings' })
 }
 
 // DELETE a new feeling
+const deleteFeeling = async (req, res) => {
+  // vildate the id in the db or not
+  const { id } = req.params
+  if (!mongoose.Types.ObjectId.isValid(id)) {
+    return res.status(404).json({ error: 'no such feelings' })
+  }
+
+  const feeling = Feeling.findByIdAndDelete({ _id: id })
+
+  if (!feeling) {
+    return res.status(404).json({ error: 'no such feelings' })
+  }
+  res.status(200).json(feeling)
+}
 
 // UPDATE a new feeling
+const updateFeeling = async (req, res) => {
+  // vildate the id in the db or not
+  const { id } = req.params
+  if (!mongoose.Types.ObjectId.isValid(id)) {
+    return res.status(404).json({ error: 'no such feelings' })
+  }
+
+  const feeling = Feeling.findByIdAndUpdate(
+    { _id: id },
+    {
+      ...req.body,
+    },
+  )
+
+  if (!feeling) {
+    return res.status(404).json({ error: 'no such feelings' })
+  } else {
+    return res.status(200).json(feeling)
+  }
+}
 
 module.exports = {
   getFeelings,
   getfeeling,
   createFeeling,
+  deleteFeeling,
+  updateFeeling,
 }

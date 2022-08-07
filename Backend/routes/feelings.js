@@ -4,6 +4,8 @@ const {
   getFeelings,
   getfeeling,
   createFeeling,
+  deleteFeeling,
+  updateFeeling,
 } = require('../controllers/feelingController')
 const router = express.Router()
 
@@ -17,13 +19,9 @@ router.get('/:id', getfeeling)
 router.post('/', createFeeling)
 
 // DELETE a new feelings
-router.delete('/:id', (req, res) => {
-  res.json({ mssg: 'DELETE a feelings' })
-})
+router.delete('/:id', deleteFeeling)
 
 // PATCH a new feelings
-router.patch('/:id', (req, res) => {
-  res.json({ mssg: 'UPDATE a feelings' })
-})
+router.patch('/:id', updateFeeling)
 
 module.exports = router
