@@ -1,30 +1,20 @@
 const express = require('express')
-const Feeling = require('../models/feelingModel')
 
+const {
+  getFeelings,
+  getfeeling,
+  createFeeling,
+} = require('../controllers/feelingController')
 const router = express.Router()
 
-//GET all feelings
-router.get('/', (req, res) => {
-  res.json({ mssg: 'GET all feelings' })
-})
+// GET all feelings
+router.get('/', getFeelings)
 
 // GET single feelings
-router.get('/:id', (req, res) => {
-  res.json({ mssg: 'GET single feelings' })
-})
+router.get('/:id', getfeeling)
 
 // POST a new feelings
-router.post('/', async (req, res) => {
-  const { feel, period, rank } = req.body
-
-  try {
-    const feeling = await Feeling.create({ feel, period, rank })
-    res.status(200).json(feeling)
-  } catch (error) {
-    res.status(400).json({ error: error.message })
-  }
-  res.json({ mssg: 'POST a new feelings' })
-})
+router.post('/', createFeeling)
 
 // DELETE a new feelings
 router.delete('/:id', (req, res) => {
