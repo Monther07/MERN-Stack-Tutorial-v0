@@ -3,7 +3,7 @@ const Feeling = require('../models/feelingModel')
 
 // GET all feeling
 const getFeelings = async (req, res) => {
-  const feelings = await Feeling.Find({}).sort({ createAt: -1 })
+  const feelings = await Feeling.find({}).sort({ createAt: -1 })
 
   res.status(200).json(feelings)
 }
