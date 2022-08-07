@@ -1,7 +1,7 @@
-import { useState, useEffect } from 'react'
+import { React, useEffect, useState } from 'react'
 
 const Home = () => {
-  const { feelings, setFeelings } = useState(null)
+  const [feelings, setFeelings] = useState(null)
 
   useEffect(() => {
     const fetchFeelings = async () => {
@@ -11,9 +11,9 @@ const Home = () => {
       if (response.ok) {
         setFeelings(json)
       }
-
-      fetchFeelings()
     }
+
+    fetchFeelings()
   }, [])
 
   return (
