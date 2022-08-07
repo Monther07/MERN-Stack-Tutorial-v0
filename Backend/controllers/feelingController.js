@@ -56,10 +56,11 @@ const deleteFeeling = async (req, res) => {
 
 // UPDATE a new feeling
 const updateFeeling = async (req, res) => {
-  // vildate the id in the db or not
+  // get the id from the req parameters (the route) in the URI
   const { id } = req.params
+  // vildate the id in the db or not
   if (!mongoose.Types.ObjectId.isValid(id)) {
-    return res.status(404).json({ error: 'id update no such feelings' })
+    return res.status(404).json({ error: 'no such feelings' })
   }
 
   const feeling = await Feeling.findOneAndUpdate(
