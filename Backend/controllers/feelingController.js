@@ -35,7 +35,7 @@ const createFeeling = async (req, res) => {
   } catch (error) {
     res.status(404).json({ error: error.message })
   }
-  res.json({ mssg: 'POST a new feelings' })
+  //res.json({ mssg: 'POST a new feelings' })
 }
 
 // DELETE a new feeling
