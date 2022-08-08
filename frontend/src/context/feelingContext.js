@@ -26,5 +26,4 @@ export const FeelingsContextProvider = ({ children }) => {
     </FeelingsContext.Provider>
   )
 }
-
-
+ 

@@ -1,8 +1,8 @@
-import { feelingContext } from '../context/feelingContext'
+import { FeelingsContext } from '../context/feelingContext'
 import { useContext } from 'react'
 
 export const useFeelingContext = () => {
-  const context = useContext(feelingContext)
+  const context = useContext(FeelingsContext)
 
   if (!context) {
     throw Error(
