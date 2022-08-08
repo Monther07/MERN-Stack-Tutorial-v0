@@ -1,5 +1,6 @@
 import { React, useEffect, useState } from 'react'
 import FeelingDetiles from '../components/FeelingDetiles'
+import FeelingFourm from '../components/FeelingFourm'
 
 const Home = () => {
   const [feelings, setFeelings] = useState(null)
@@ -25,6 +26,7 @@ const Home = () => {
             <FeelingDetiles feeling={feeling} key={feeling._id} />
           ))}
       </div>
+      <FeelingFourm />
     </div>
   )
 }
