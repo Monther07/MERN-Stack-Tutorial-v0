@@ -1,6 +1,8 @@
 import { React, useState } from 'react'
+import { useFeelingContext } from '../hooks/useFeelingContext'
 
 const FeelingFourm = () => {
+  const [dispatch] = useFeelingContext()
   const [feel, setFeel] = useState('')
   const [period, setPeriod] = useState('')
   const [rank, setRank] = useState('')
@@ -28,6 +30,7 @@ const FeelingFourm = () => {
       setRank('')
       setError(null)
       console.log('new feelings added', json)
+      dispatch({ type: 'CREATE_FEELING', payload: json })
     }
   }
 

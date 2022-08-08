@@ -1,4 +1,5 @@
-import { React, children, createContext, useReducer } from 'react'
+import { children, createContext, useReducer } from 'react'
+import { React } from 'react'
 
 export const FeelingsContext = createContext()
 
@@ -26,4 +27,3 @@ export const FeelingsContextProvider = ({ children }) => {
     </FeelingsContext.Provider>
   )
 }
- 
