@@ -19,10 +19,10 @@ const Home = () => {
 
   return (
     <div className="home">
-      <div className="feelings">
+      <div className="feeling">
         {feelings &&
           feelings.map((feeling) => (
-            <FeelingDetails feeling={feeling} key={feeling._id} />
+            <FeelingDetiles feeling={feeling} key={feeling._id} />
           ))}
       </div>
     </div>
