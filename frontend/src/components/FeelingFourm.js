@@ -29,7 +29,6 @@ const FeelingFourm = () => {
       setPeriod('')
       setRank('')
       setError(null)
-      console.log('new feelings added', json)
       dispatch({ type: 'CREATE_FEELING', payload: json })
     }
   }
