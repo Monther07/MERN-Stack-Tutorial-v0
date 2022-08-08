@@ -4,7 +4,7 @@ const FeelingDetiles = ({ feeling }) => {
     <div className="feelings-details">
       <h4>{feeling.feel}</h4>
       <p>
-        <strong>period (kg): </strong>
+        <strong>period: </strong>
         {feeling.period}
       </p>
       <p>
